@@ -1,0 +1,13 @@
+Arrancar la maquina virtual:
+usuario:odoo
+contraseña:1234
+
+Probar el modulo desde web: 
+poner en el buscador 192.168.0.160:8069
+usuario : mayrin1704@gmail.com
+contraseña : 1234
+
+En caso de error:
+sudo  lsof -i :8069
+sudo kill (PID -obtenido anteriormente con el comando anterior)
+odoo -u empresa_abogados -d prueba
