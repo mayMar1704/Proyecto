@@ -1,0 +1,143 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="proyecto_facturas_tree">
+            <field name="name">empresa_abogados.facturas.tree</field>
+            <field name="model">empresa_abogados.facturas</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="fecha" />
+                    <field name="num_factura" />
+                    <field name="concepto" />
+
+                    <field name="BI" />
+                    <field name="IVA" widget="percentage" />
+                    <field name="importe_total" />
+
+                    <field name="fecha_cobro" />
+                    <field name="cobrado" />
+                    <field name="Modo_envio" />
+                    <field name="fecha_alta" />
+                    <field name="observaciones" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_facturas_form" model="ir.ui.view">
+            <field name="name">facturas.form</field>
+            <field name="model">empresa_abogados.facturas</field>
+            <field name="arch" type="xml">
+                <form string="Facturas">
+                    <header>
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" string="Sacar factura">
+
+                            <button class="oe_stat_button"
+                                name="reporte_facturas_arca_auditores"
+                                type="object"
+                                string="Arca Auditores WORD"
+                                icon="fa-print">
+                            </button>
+                            <button class="oe_stat_button"
+                                name="reporte_facturas_arca_consortium"
+                                type="object"
+                                string="Arca Consortium WORD"
+                                icon="fa-print" />
+
+                            <button class="oe_stat_button"
+                                name="empresa_abogados.report_factura_auditores_button"
+                                type="action"
+                                string="Arca Auditores PDF "
+                                icon="fa-print">
+                            </button>
+                            <button class="oe_stat_button"
+                                name="empresa_abogados.report_factura_consortium_button"
+                                type="action"
+                                string="Arca Consortium PDF "
+                                icon="fa-print">
+                            </button>
+                        </div>
+                        <h1> Numero de Factura: <field name="num_factura" /></h1>
+                        <group>
+
+                            <group string="Importe">
+                                <field name="BI" />
+                                <field name="IVA" widget="percentage" />
+                                <field name="importe_IVA" />
+                                <field name="importe_total" />
+                            </group>
+                            <group string="Datos Cobro">
+                                <field name="fecha_cobro" />
+                                <field name="Modo_envio" />
+                                <field name="cobrado" widget='boolean_toggle'> </field>
+                            </group>
+                        </group>
+                        <group string="Adjuntado a">
+
+
+                            <field name="proyecto" context="{'default_proyecto_id': active_id}" />
+                            <field name="cliente" />
+                             <field name="observaciones" />
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="proyecto_gestion_tree">
+            <field name="name">empresa_abogados.gestion.tree</field>
+            <field name="model">empresa_abogados.gestion</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="area" />
+                    <field name="certificado" />
+                    <field name="facturado" />
+                    <field name="ejecutado" />
+                    <field name="fecha_finalizacion" />
+                    <field name="fecha_cierre" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_gestion_form" model="ir.ui.view">
+            <field name="name">empresa_abogados.gestion.form</field>
+            <field name="model">empresa_abogados.gestion</field>
+            <field name="arch" type="xml">
+                <form string="Gestion">
+                    <header>
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+                    </header>
+                    <sheet>
+                        <h1>ID: <field name="id" /></h1>
+                        <group>
+                            <field name="area" />
+                        </group>
+                        <group>
+                            <field name="certificado" widget='boolean_toggle' />
+
+                            <field name="facturado" widget='boolean_toggle' />
+
+
+                            <field name="ejecutado" widget='boolean_toggle' />
+
+                        </group>
+                        <group string="Finalizacion">
+                            <group>
+                                <field name="fecha_finalizacion" />
+                            </group>
+                            <group>
+                                <field name="fecha_cierre" />
+                            </group>
+                        </group>
+                        <group string="Adjuntado">
+
+                            <field name="proyectos" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

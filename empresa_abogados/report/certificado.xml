@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_example_template">
+            <t t-call="web.html_container">
+                <div class="header"></div>
+                <t t-call="web.external_layout">
+                    <div class="content" align="left">
+                        <h2 class="text-center text-info">
+                            MEMBRETE DEL ORGANISMO
+                        </h2>
+                        <div>
+                            <p> D.(NOMBRE DE LA PERSONA QUE FIRMA) , como (CARGO QUE OCUPA DICHA
+                                PERSONA) de <b>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <span t-field="doc.cliente" />
+                                    </t>
+                                </b> , entidad contratante del servicio <b>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <span t-field="doc.name" />
+                                    </t>
+                                </b>
+                            </p>
+                        </div>
+                        <div>
+                            <h2>
+                                <p>
+                                    <b>CERTIFICA:</b>
+                                </p>
+                            </h2>
+                        </div>
+                        <div>
+                            <p> Que la empresa <b>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <span t-field="doc.empresa" />
+                                    </t>
+                                </b>
+                                , adjudicataria del referido servicio, ejecuto los trabajos de
+                                acuerdo a las condiciones y a satisfacción del <b>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <span t-field="doc.cliente" />
+                                    </t>
+                                </b>
+                                durante el año <b>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <span t-field="doc.fecha_duracion" />
+                                    </t>
+                                </b>,
+                                siendo el importe del contrato de<b>
+                                    <t t-foreach="docs" t-as="doc">
+                                        <span t-field="doc.importe_facturas" />
+                                    </t>
+                                </b>
+                                euros (IVA incluido), y las personas que ejecutaron dicho servicio
+                                fueron: <br></br>
+                                    <div>
+                                    <ul>
+                                        <li>Esther Camacho</li>
+                                        <li>Jaime García-Rosado</li>
+                                        <li>Luis Felipe Suárez-Olea</li>
+                                        <t t-foreach="docs" t-as="doc">
+                                            <span t-if="doc.equipo">
+                                                <li t-foreach="doc.equipo" t-as="usuario">
+                                                    <span t-field="usuario.name" />
+                                                </li>
+                                            </span>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </p>
+                        </div>
+                        <div>
+                            <p> Y para que asi conste ,y a quien pudiera interesa, expido el
+                                presente certificado en Madrid , a <b>
+                                    <script>
+                                        date = new Date().toLocaleDateString();
+                                        document.write(date);
+                                    </script>
+                                </b></p>
+                        </div>
+                        <div>
+                            <p>CARGO DE LA PERSONA QUE FIRMA</p>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </div>
+                        <div>
+                            <p>FIRMA Y SELLO
+                            </p>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </div>
+                        <div>
+                            <p>NOMBRE DE LA PERSONA QUE FIMA</p>
+                        </div>
+                        <div class="footer">
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="report_certificado_button" model="ir.actions.report">
+            <field name="name">Certificado</field>
+            <field name="model">empresa_abogados.proyecto</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">empresa_abogados.report_example_template</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,85 @@
+<odoo>
+    <record id="usu_mod_maria_a" model="res.users">
+        <field name="name">Maria America De Santis Pascuali </field>
+        <field name="login">america.santisp@externos.isciii.es</field>
+        <field name="password">mypassword</field>
+    </record>
+    <record id="usu_mod_ana_m" model="res.users">
+        <field name="name">Ana de la Maza</field>
+        <field name="login">secretaria@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+
+    <record id="usu_mod_flor_m" model="res.users">
+        <field name="name">Flor Marín Camacho</field>
+        <field name="login">flor@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+    <record id="usu_mod_jaime_g" model="res.users">
+        <field name="name">Jaime García-Rosado</field>
+        <field name="login">jaime@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+
+    <record id="usu_mod_lidia_g" model="res.users">
+        <field name="name">Lidia García de Lamo</field>
+        <field name="login">lidiagarcia@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+
+    <record id="usu_mod_alejandro_g" model="res.users">
+        <field name="name">Alejandro Gallego G.</field>
+        <field name="login">agg@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+
+    <record id="usu_mod_pilar_r" model="res.users">
+        <field name="name">Pilar Romea Concellón</field>
+        <field name="login">pilarromea@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+    <record id="usu_mod_tibisay_r" model="res.users">
+        <field name="name">Tibisay Rodriguez</field>
+        <field name="login">tibisayr@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+     <record id="usu_mod_marta_b" model="res.users">
+        <field name="name">Marta Buendia</field>
+        <field name="login">martabuendia@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+     <record id="usu_mod_sara_m" model="res.users">
+        <field name="name">Sara Martín</field>
+        <field name="login">saramartin@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+    </record>
+    <!-- Administradores -->
+     <record id="usu_mod_miguel_z" model="res.users">
+        <field name="name">Miguel Zurita R</field>
+        <field name="login">mzr@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system')), (4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+    </record>
+
+    <record id="usu_mod_esther_c" model="res.users">
+        <field name="name">Esther Camacho G.</field>
+        <field name="login">esther@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system')), (4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+    </record>
+
+    <record id="usu_mod_ana_a" model="res.users">
+        <field name="name">Ana Alonso Candelario</field>
+        <field name="login">aac@arcaconsortium.net</field>
+        <field name="password">mypassword</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system')), (4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+    </record>
+    <!--  Grupos de usuarios-->
+    <record id="grupo_trabajadores" model="res.groups">
+        <field name="name">grupo_trabajadores</field>
+        <field name="comment">grupo de coches</field>
+        <field name="category_id">79</field>
+        <field name="users" eval="[(4,ref('usu_mod_ana_m')),(4,ref('usu_mod_flor_m')),(4,ref('usu_mod_jaime_g')),(4,ref('usu_mod_lidia_g')),(4,ref('usu_mod_alejandro_g')),(4,ref('usu_mod_pilar_r')),(4,ref('usu_mod_tibisay_r')),(4,ref('usu_mod_marta_b')),(4,ref('usu_mod_sara_m')),(4,ref('usu_mod_maria_a'))]"/>
+    </record>
+
+</odoo>

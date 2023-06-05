@@ -1,0 +1,199 @@
+<odoo>
+    <data>
+        <record id="view_proyecto_proyecto_search" model="ir.ui.view">
+            <field name="name">Filtros proyecto</field>
+            <field name="model">empresa_abogados.proyecto</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" filter_domain="[('name','ilike',self)]"
+                        string="Nombre del Proyecto" />
+                      <field name="num_oferta_facturas" filter_domain="[('num_oferta_facturas','ilike',self)]"
+                        string="Numero de Factura" />    
+                    <field name="cliente" filter_domain="[('cliente','ilike',self)]"
+                        string="Cliente" />
+                    <field name="id" filter_domain="[('id','ilike',self)]" string="ID" />
+                    <filter name="tramitacion" string="Tramitacion - Oferta"
+                        domain="[('tramitacion', '=', '1')]" />
+                    <filter name="tramitacion" string="Tramitacion - Licitacion"
+                        domain="[('tramitacion', '=', '2')]" />
+                    <separator />
+                    <filter string="Estado - Estudio" name="filtrar_estado_e"
+                        domain="[('estado', '=', 'en_estudio')]"
+                    />
+                    <filter string="Estado - Aceptada" name="filtrar_estado_ac"
+                        domain="[('estado', '=', 'aceptada')]"
+                    />
+                    <filter string="Estado - Presentado" name="filtrar_estado_p"
+                        domain="[('estado', '=', 'presentado')]"
+                    />
+                    <filter string="Estado - Descartado" name="filtrar_estado_d"
+                        domain="[('estado', '=', 'descartado')]"
+                    />
+                    <filter string="Estado - Adjudicado" name="filtrar_estado_a"
+                        domain="[('estado', '=', 'adjudicado')]"
+                    />
+                    <filter string="Estado - Facturado" name="filtrar_estado_f"
+                        domain="[('estado', '=', 'facturado')]"
+                    />
+                    <separator />
+                    <filter name="empresa" string="Empresa - Arca Auditores"
+                        domain="[('empresa', '=', '1')]" />
+                    <filter name="empresa" string="Empresa - Arca Consortium"
+                        domain="[('empresa', '=', '2')]" />
+                    <group expand="0" string="Group By">
+                        <filter name="filtrar_cli" string="Cliente" domain="[]"
+                            context="{'group_by':'cliente'}" />
+                        <filter string="Empresa" name="filtrar_empresa" domain="[]"
+                            context="{'group_by':'empresa'}" />
+                        <filter string="Estado" name="filtrar_estado" domain="[]"
+                            context="{'group_by':'estado'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="view_proyecto_facturas_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.facturas</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="proyecto" filter_domain="[('proyecto','ilike',self)]" string="Proyecto" />
+                    <field name="num_factura" filter_domain="[('num_factura','ilike',self)]"
+                        string="Numero de Factura" />
+                    <field name="concepto" filter_domain="[('concepto','ilike',self)]"
+                        string="Concepto" />
+                    <field name="nombre_cliente" filter_domain="[('nombre_cliente','ilike',self)]"
+                        string="Nombre Cliente" />
+                    <field name="cif_cliente" filter_domain="[('cif_cliente','ilike',self)]"
+                        string="Cif_cliente" />
+                    <filter name="fecha" string="Facturas del Mes Actual"
+                        domain="[('fecha', '&gt;=', False)]"
+                        context="{'search_default_fecha': True}" />
+                    <filter name="proyecto" string="Empresa - Arca Auditores"
+                        domain="[('tramitacion', '=', '1')]" />
+                    <filter name="proyecto" string="Empresa - Arca consortium"
+                        domain="[('tramitacion', '=', '2')]" />
+                    <filter name="fecha_2" string="Fecha Elegir"
+                        domain="[('fecha_alta','&lt;=',self)]" />
+                    <separator />
+                    <group expand="0" string="Group By">
+                        <filter name="filtrar_proyecto" string="Proyecto" domain="[]"
+                            context="{'group_by':'proyecto'}" />
+                        <filter string="Fecha" name="filtrar_empresa" domain="[]"
+                            context="{'group_by':'fecha'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_proyecto_gestion_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.gestion</field>
+            <field name="arch" type="xml">
+                <search>
+                 <field name="id" filter_domain="[('id','ilike',self)]"
+                        string="ID" />
+                 <field name="proyectos" filter_domain="[('proyectos','ilike',self)]"
+                        string="Proyecto" />
+                    <filter name="proyectos" string="Empresa - Arca Auditores"
+                        domain="[('proyectos', '=', '1')]" />
+                    <filter name="tramitacion" string="Empresa - Arca consortium"
+                        domain="[('tramitacion', '=', '2')]" />
+                    <filter name="certifcado" string="Certificado"
+                        domain="[('certificado', '=', 'True')]" />
+                    <filter name="facturado" string="Facturado"
+                        domain="[('facturado', '=', 'True')]" />
+                    <filter name="ejecutado" string="Ejecutado"
+                        domain="[('ejecutado', '=', 'True')]" />
+                    <separator />
+                    <group expand="0" string="Group By">
+                        <filter name="filtrar_proyecto" string="Proyecto" domain="[]"
+                            context="{'group_by':'proyectos'}" />
+                        <filter string="Fecha" name="filtrar_empresa" domain="[]"
+                            context="{'group_by':'fecha_alta'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="view_proyecto_oferta_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.oferta</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" filter_domain="[('name','ilike',self)]"
+                        string="Numero de Oferta" />
+                    <field name="convocatoria" filter_domain="[('convocatoria','ilike',self)]"
+                        string="Convocatoria" />
+                    <field name="num_informes" filter_domain="[('num_informes','ilike',self)]"
+                        string="Numero de informes" />
+                    <field name="proyecto_id" filter_domain="[('proyecto_id','ilike',self)]"
+                        string="Proyecto" />
+                    <filter name="aceptada_true" string="Aceptada"
+                        domain="[('aceptada','=', 'True')]" />
+                </search>
+            </field>
+        </record>
+        <record id="view_proyecto_estudio_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.estudio</field>
+            <field name="arch" type="xml">
+                <search>
+                <field name="name" filter_domain="[('name','ilike',self)]"
+                        string="CPV" />
+                   
+                    <field name="proyecto" filter_domain="[('proyecto','ilike',self)]"
+                        string="Proyecto" />
+                    <filter name="descartado" string="Descartado"
+                        domain="[('descartado','=', 'True')]" />
+                    <filter name="presentado" string="Presentado"
+                        domain="[('presentado','=', 'True')]" />
+                    <filter name="presentado_consorcio" string="Presentado en Consorcio"
+                        domain="[('presentado_consorcio','=', 'True')]" />
+                </search>
+            </field>
+        </record>
+
+        <record id="view_proyecto_seguimiento_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.seguimiento</field>
+            <field name="arch" type="xml">
+                <search>
+                <field name="id" filter_domain="[('id','ilike',self)]"
+                        string="ID" />
+                    <field name="proyecto" filter_domain="[('proyecto,'ilike',self)]"
+                        string="Proyecto" />
+                    <filter name="adjudicado" string="Adjudicado"
+                        domain="[('adjudicado','=', 'True')]" />
+                </search>
+            </field>
+        </record>
+        <record id="view_proyecto_adjudicacion_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.adjudicacion</field>
+            <field name="arch" type="xml">
+                <search>
+                <field name="id" filter_domain="[('id','ilike',self)]"
+                        string="ID" />
+                    <field name="proyecto" filter_domain="[('proyecto,'ilike',self)]"
+                        string="Proyecto" />
+                </search>
+            </field>
+        </record>
+         <record id="view_proyecto_clientes_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.clientes</field>
+            <field name="arch" type="xml">
+                <search>
+                <field name="id" filter_domain="[('id','ilike',self)]"
+                        string="ID" />
+                    <field name="name" filter_domain="[('name','ilike',self)]"
+                        string="Nombre Cliente" />
+                </search>
+            </field>
+        </record>
+         <record id="view_proyecto_contacto_search" model="ir.ui.view">
+            <field name="model">empresa_abogados.contactos</field>
+            <field name="arch" type="xml">
+                <search>
+                <field name="id" filter_domain="[('id','ilike',self)]"
+                        string="ID" />
+                <field name="name" string="Nombre Contacto" filter_domain="[('name','ilike',self)]" />
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo> 

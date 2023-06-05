@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <record id="view_estudio_form" model="ir.ui.view">
+            <field name="name">estudio.form</field>
+            <field name="model">empresa_abogados.estudio</field>
+            <field name="arch" type="xml">
+                <form string="Proyecto">
+                    <header>
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+                    </header>
+                    <sheet>
+                        <h1> CPV: <field name="name" /></h1>
+                        <group>
+                            <field name="contacto" />
+                        </group>
+
+                        <group string="Presentacion">
+                            <field name="Fin_plazo_presentacion_oferta" />
+                            <field name="importe_licitación" />
+                            <field name="plazo_de_ejecución" />
+                            <field name="posible_prorroga" />
+                        </group>
+                        <group string="Criterios">
+                            <field name="criterios_objetivos" />
+                            <field name="criterios_subjetivos" />
+                            <field name="solvencia_económica_exigida" />
+                            <field name="solvencia_técnica_exigida" />
+                            <field name="valor_estimado" />
+                            <field name="forma_presentación_oferta" />
+                            <field name="equipo_trabajo_requerido" />
+                        </group>
+                        <group string="Presentacion">
+                            <group>
+                                <field name="presentado" widget='boolean_toggle' />
+                                <field name="fecha_presentacion" />
+
+                            </group>
+                            <group>
+                                <field name="presentado_consorcio" />
+                                <field name="nombre_consorcio" />
+                            </group>
+                        </group>
+                        <group string="Descarte">
+                            <group>
+                                <field name="descartado" widget='boolean_toggle' />
+                            </group>
+                            <group>
+                                <field name="motivo_descarte" />
+                            </group>
+                        </group>
+                        <group string="Relacionado">
+                            <field name="proyecto" context="{'default_proyecto_id': active_id}" />
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

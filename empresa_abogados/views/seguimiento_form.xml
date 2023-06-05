@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record id="view_seguimiento_form" model="ir.ui.view">
+            <field name="name">seguimiento.form</field>
+            <field name="model">empresa_abogados.seguimiento</field>
+            <field name="arch" type="xml">
+                <form string="Seguimiento">
+                    <header>
+                        
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+                    </header>
+                    <sheet>
+                        <h1>ID : <field name="id"></field></h1>
+                        <group>
+                          
+                            <group string="Arca">
+                                <field name="precio_arca_bi" />
+                                <field name="baja_de_arca" widget="percentage" />
+                                <field name="puntuacion_OT_Arca" />
+                               
+                            </group>
+                               <group string="Empresa Adjudicataria">
+                                <field name="precio_empresa_adjudicataria" />
+                                <field name="baja_empresa_adjudicataria" widget="percentage"/>
+                                 <field name="puntuacion_OT_adjudicataria" />
+                            </group>           
+                        </group>
+                       
+                        <group>
+                            <group>
+                                <field name="adjudicado" widget='boolean_toggle' />
+                            </group>
+                            <group>
+                                <field name="nombre_empresa_adjudicataria" />
+                            </group>
+                        </group>
+                        <group string='Relacionado'>
+                            <field  name="proyecto"  context="{'default_proyecto_id': active_id}"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

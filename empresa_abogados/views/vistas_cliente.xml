@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <!-- contactos-->
+        <record model="ir.ui.view" id="proyecto_contactos_tree">
+            <field name="name">empresa_abogados.contactos.tree</field>
+            <field name="model">empresa_abogados.contactos</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                   
+                    <field name="name" />
+                    <field name="apellidos"/>
+                    <field name="cargo" />
+                    <field name="numero" widget="phone" />
+                    <field name="correo" widget="email" />
+                    <field name="fecha_alta" />
+                  
+                </tree>
+            </field>
+        </record>
+        <!-- clientes -->
+        <record model="ir.ui.view" id="proyecto_clientes_tree">
+            <field name="name">empresa_abogados.clientes.tree</field>
+            <field name="model">empresa_abogados.clientes</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="cif" />
+                    <field name="acronimos" />
+                    
+                    <field name="tipologia" />
+                    
+                    <field name="direccion" />
+                    <field name="contactos" />
+                    <field name="fecha_alta" />
+                  
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

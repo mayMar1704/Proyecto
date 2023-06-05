@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+        <record id="view_cliente_form" model="ir.ui.view">
+            <field name="name">clientes.form</field>
+            <field name="model">empresa_abogados.clientes</field>
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    <header>
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+                    </header>
+                    <sheet>
+                         <h1>ID: <field name="id" /></h1>
+                       
+                        <group>
+                            <group>
+
+                                <field name="name" />
+                                <field name="acronimos" />
+                            </group>
+                            <group>
+                                <field name="cif" />
+                                <field name="tipologia" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="direccion" />
+                        </group>
+
+                        <h3>Contactos</h3>
+                        <field name="contactos" />
+
+                        <group>
+                            <field name="observaciones" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+          <record id="view_contactos_form" model="ir.ui.view">
+            <field name="name">empresa_abogadoscontactos.form</field>
+            <field name="model">empresa_abogados.contactos</field>
+            <field name="arch" type="xml">
+                <form string="Contactos">
+                    <header>
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+                    </header>
+                    <sheet>
+                     
+                            <h1>ID: <field name="id" /></h1>
+                        
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="apellidos" />      
+                                <field name="cargo" />
+                            </group>
+                           
+                        </group>
+                        <group>
+                         <group string="Contacto de">
+                             <field name="id_c" />
+                             </group>
+                            <group string="Comunicacion">
+                                <field name="numero" />
+                                <field name="correo" />
+                            </group></group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

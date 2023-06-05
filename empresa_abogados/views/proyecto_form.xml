@@ -1,0 +1,202 @@
+<odoo>
+    <data>
+        <record id="ir_cron_project_notification" model="ir.cron">
+            <field name="name">Proyecto Notification Cron</field>
+            <field name="model_id" ref="model_empresa_abogados_proyecto" />
+            <field name="state">code</field>
+            <field name="code">model.create_notification()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall">1</field>
+            <field name="nextcall"
+                eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 08:00:00')" />
+            <field name="active" eval="True" />
+        </record>
+
+        <record id="view_proyecto_form" model="ir.ui.view">
+            <field name="name">empresa_abogados.form</field>
+            <field name="model">empresa_abogados.proyecto</field>
+            <field name="arch" type="xml">
+                <form string="Proyecto">
+                    <header>
+                        <field name="fecha_alta" readonly="1" string="Fecha alta" />
+                        <field name="estado" widget="statusbar"
+                            statusbar_visible="en_estudio,aceptada,presentado,descartado,adjudicado,facturado" />
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box">
+                            <button class="oe_stat_button"
+                                name="create_notification"
+                                type="object"
+                                string="Notificacion"
+                                icon="fa-clock-o" />
+                            <button class="oe_stat_button"
+                                name="generar_certificado"
+                                type="object"
+                                string="Certificado Word"
+                                icon="fa-print" />
+                            <button class="oe_stat_button"
+                                name="empresa_abogados.report_certificado_button"
+                                type="action"
+                                string="Certificado PDF "
+                                icon="fa-print">
+                            </button>
+                        </div>
+                        <h1>Nombre Del Proyecto: <field name="name" /></h1>
+
+                        <group>
+                            <group>
+
+                                <field name="id" readonly="1" />
+
+                                <field name="cliente" />
+                            </group>
+                            <group>
+                                <field name="empresa" />
+                                <field name="tramitacion" />
+                            </group>
+                        </group>
+
+                        <group>
+
+                            <group string="Importe">
+                                <field name="BI" />
+                                <field name="IVA" widget="percentage" />
+                                <field name="importe_IVA" />
+                                <field name="total" />
+                                <field name="write_uid" invisible="1" />
+
+                            </group>
+
+                        </group>
+
+                        <notebook>
+                            <page string="Oferta"
+                                attrs="{'invisible': [('tramitacion', '!=', '1')]}">
+
+                                <field name="oferta_id" context="{'default_proyecto_id': active_id}">
+                                    <tree>
+                                        <field name="name" />
+
+                                        <field name="fecha_solicitud_oferta" />
+                                        <field name="fecha_fin_plazo_ejecucion" />
+                                        <field name="fecha_envio" />
+
+                                        <field name="num_informes" />
+                                        <field name="convocatoria" />
+
+                                        <field name="aceptada" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Estudio"
+                                attrs="{'invisible': [('tramitacion', '!=', '2')]}">
+
+                                <field name="estudio_id"
+                                    context="{'default_proyecto_id': active_id}">
+                                    <tree>
+                                        <field name="Fin_plazo_presentacion_oferta" />
+                                        <field name="importe_licitación" />
+                                        <field name="plazo_de_ejecución" />
+
+                                        <field name="presentado" />
+                                        <field name="fecha_presentacion" />
+
+                                        <field name="presentado_consorcio" />
+                                        <field name="nombre_consorcio" />
+
+                                        <field name="descartado" />
+                                        <field name="motivo_descarte" />
+                                    </tree>
+                                </field>
+
+                            </page>
+
+                            <page string="Seguimiento"
+                                attrs="{'invisible': [('tramitacion', '!=', '2')]}">
+
+                                <field name="seguimiento_id"
+                                    context="{'default_proyecto_id': active_id}">
+                                    <tree>
+                                        <field name="precio_arca_bi" />
+                                        <field name="baja_de_arca" widget="percentage" />
+                                        <field name="precio_empresa_adjudicataria" />
+                                        <field name="baja_empresa_adjudicataria" widget="percentage" />
+                                        <field name="puntuacion_OT_Arca" />
+                                        <field name="puntuacion_OT_adjudicataria" />
+                                        <field name="adjudicado" />
+                                        <field name="nombre_empresa_adjudicataria" />
+
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Adjudicacion"
+                                attrs="{'invisible': [('tramitacion', '!=', '2')]}">
+                                <field name="adjudicacion_id"
+                                    context="{'default_proyecto_id': active_id}">
+                                    <tree>
+                                        <field name="id" />
+                                        <field name="fecha_fin_plazo_ejecucion" />
+                                        <field name="fecha_fin_plazo_prorroga" />
+                                        <field name="fecha_de_adjudicacion" />
+
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Facturas"
+                                attrs="{'invisible': [('tramitacion', '=',False)]}">
+                                <field name="facturas_id"
+                                    context="{'default_proyecto_id': active_id, 'default_cliente': cliente}" />
+                            </page>
+                            <page string="Gestion"
+                                attrs="{'invisible': [('tramitacion', '=',False)]}">
+                                <field name="gestion_id"
+                                    context="{'default_proyecto_id': active_id}" />
+                            </page>
+
+                        </notebook>
+                        <group>
+                            <field name="equipo" widget="many2many_tags"
+                                options="{'no_create': True}" string="Usuarios asignados">
+                                <tree>
+                                    <field name="name" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                    <sheet>
+                        <notebook>
+                            <page string="Documentos adjuntos">
+                                <field name="documento_ids"
+                                    context="{'default_proyecto_id': active_id}">
+                                    <tree>
+                                        <field name="name" />
+                                        <field name="datas" />
+                                        <field name="mimetype" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Documentos creados">
+                                <field name="attachment_ids">
+                                    <tree string="Adjuntos">
+                                        <field name="name" />
+                                        <field name="res_id" />
+                                        <field name="type" />
+                                    </tree>
+                                </field>
+
+                            </page>
+                        </notebook>
+                        <group>
+                            <field name="observaciones" />
+                            <field name="crear_user" />
+                            <field name="write_user" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

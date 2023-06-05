@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!-- empresa_abogados -->
+        <menuitem name="Proyecto" id="menu_principal_empresa_abogados" action="empresa_abogados_proyecto_acc_v" />
+        <menuitem name="Oferta" id="empresa_abogados_oferta" parent="menu_principal_empresa_abogados"
+            action="empresa_abogados_oferta_acc_v" />    
+        <menuitem name="Estudio" id="empresa_abogados_estudio" parent="menu_principal_empresa_abogados"
+        action="empresa_abogados_estudio_acc_v" />     
+        <menuitem name="Seguimiento" id="empresa_abogados_seguimiento" parent="menu_principal_empresa_abogados"
+        action="empresa_abogados_seguimiento_acc_v" />  
+        <menuitem name="Adjudicacion" id="empresa_abogados_adjudicacion" parent="menu_principal_empresa_abogados"
+        action="empresa_abogados_adjudicacion_acc_v" /> 
+         <!-- Clientes -->
+         <menuitem name="Clientes" id="menu_principal" action="empresa_abogados_clientes_acc_v" />
+         <menuitem name="Contactos" id="coches_coches_mayrin" parent="menu_principal"
+         action="empresa_abogados_contactos_acc_v" />
+        <!-- administracion -->
+        <menuitem name="Facturas" id="menu_principal_administracion" 
+         action="empresa_abogados_facturas_acc_v" />
+        <menuitem name="Gestion" id="empresa_abogados_gestion" parent="menu_principal_administracion"
+            action="empresa_abogados_gestion_acc_v" />   
+        <!-- ficheros -->
+         <menuitem name="Documento Adjuntos"  id="menu_principal_documento_adjunto"
+            action="empresa_abogados_documento_acc_v"  />
+        <menuitem name="Documento Creados" id="menu_principal_documento_creado"
+            action="empresa_abogados_creado_acc_v" parent="menu_principal_documento_adjunto" />
+    </data>
+</odoo>

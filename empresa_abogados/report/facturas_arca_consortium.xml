@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_factura_consortium_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <div class="header" align="center">
+                            <img src="/empresa_abogados/static/src/img/arca_consortium.png"
+                                style="max-height: 100px;" />
+                        </div>
+                        <t t-call="web.external_layout">
+                            <div class="content" style="margin-right: 50px;margin-left: 50px;">
+                                <div class="page" align="center">
+                                    <p style="text-align: right;"> FACTURA<b>
+                                            <span t-field="doc.num_factura" />
+                                        </b>
+                                    </p>
+                                </div>
+                                
+                                    <br></br>
+                                <div style="text-align: left;">
+                                    <p>
+                                        <b>
+                                            <span t-field="doc.nombre_cliente" />
+                                        </b>
+                                    </p>
+                                    
+                                    <br></br>
+                                    <p>
+                                        <b>
+                                            <span t-field="doc.direccion_cliente" />
+                                        </b>
+                                    </p>
+                                    <br></br>
+                                    <p>CIF:<b>
+                                            <span t-field="doc.cif_cliente" />
+                                        </b></p>
+                                </div>
+                                
+                                    <br></br>
+                                    <br></br>
+                                <div>
+                                    <p> Factura correspondiente a los trabajos de <b>
+                                            <span t-field="doc.proyectos" />
+                                        </b>
+                                        . </p>
+                                </div>
+                                <br></br>
+                                    <br></br>
+                                <div style="text-align: right;">
+                                    <p>Base Imponible ......................................<b>
+                                            <span t-field="doc.BI" />
+                                        </b>
+                                        &#8364;</p>
+                                    <p> 21% IVA ............................................<b>
+                                            <span t-field="doc.importe_IVA" />
+                                        </b>
+                                        &#8364;</p>
+                                    <p> TOTAL ..............................................<b>
+                                            <span t-field="doc.importe_total" />
+                                        </b>
+                                        &#8364;</p>
+                                </div>
+                                <br></br>
+                                
+                                    <br></br>
+                                <div  align="right">
+                                    <p>En Madrid, a fecha y hora de la firma electrónica</p>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                </div>
+                                <div  align="right">
+                                    <p>Fdo. Esther Camacho González
+                                    </p>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                    <br></br>
+                                </div>
+                                <div>
+                                    <h6 class="text-center" style="font-size:.93em;">
+                                        Dicha factura la pueden hacer efectiva mediante
+                                        transferencia a nuestra cuenta corriente abierta en La Caixa
+                                        (Calle Génova 17 de Madrid), ES3721009194132200582579 a
+                                        nombre de ARCA CONSORTIUM S.A.
+                                    </h6>
+                                </div>
+                                <div style="font-size: .80em;">
+                                    <p> De conformidad con lo establecido en la normativa vigente en
+                                        Protección de Datos de Carácter Personal, le informamos que
+                                        sus datos serán incorporados al sistema de tratamiento
+                                        titularidad de ARCA CONSORTIUM SA con CIF A28911238 y
+                                        domicilio social sito en CL SANTA ENGRACIA 6 28010, MADRID,
+                                        con la finalidad de poder remitirle la correspondiente
+                                        factura. En cumplimiento con la normativa vigente, ARCA
+                                        CONSORTIUM SA informa que los datos serán conservados
+                                        durante EN EL PLAZO LEGALMENTE ESTABLECIDO.
+                                    </p>
+                                    <p> Podrá ejercer los derechos de acceso, rectificación,
+                                        limitación de tratamiento, supresión, portabilidad y
+                                        oposición/revocación, en los términos que establece la
+                                        normativa vigente en materia de protección de datos,
+                                        dirigiendo su petición a la dirección postal CL SANTA
+                                        ENGRACIA 6 28010, MADRID o bien a través de correo
+                                        electrónico  <a
+                                            href="mailto:MADRID@ARCACONSORTIUM.NET">MADRID@ARCACONSORTIUM.NET</a>.</p>
+                                </div>
+
+                            </div>
+                            <div class="footer">
+                                <footer  style="font-size:.87em; color: #191970; " class="text-center">
+                                    <p> SANTA ENGRACIA 6 – 28010 MADRID – TEL.:34-91 319 26 58 – FAX: 34 – 91 319 27 51  e-mail: <a
+                                            href="mailto:madrid@arcaconsortium.net">
+                                            madrid@arcaconsortium.net</a> <br></br>
+                                    Rue Belliard 20 – 1040 BRUXELES – e-mail : <a
+                                            href="mailto:bruselas@arcaconsortium.net">
+                                            bruselas@arcaconsortium.net</a> <br></br>
+                                      ARCA CONSORTIUM, S.A. Inscrita en R.M. MM Madrid, tomo 7108, folio 58, sección 8ª, hoja M-115.454. C.I.F. A-28911238
+</p>
+                                </footer>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="report_factura_consortium_button" model="ir.actions.report">
+            <field name="name">Factura con</field>
+            <field name="model">empresa_abogados.facturas</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">empresa_abogados.report_factura_consortium_template</field>
+        </record>
+    </data>
+</odoo>

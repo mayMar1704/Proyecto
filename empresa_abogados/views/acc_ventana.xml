@@ -1,0 +1,71 @@
+<odoo>
+    <data><!-- acciones de ventana -->
+     
+    <!-- oferta -->
+      <record model="ir.actions.act_window" id="empresa_abogados_oferta_acc_v">
+        <field name="name">Oferta</field>
+        <field name="res_model">empresa_abogados.oferta</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- proyecto -->
+    <record model="ir.actions.act_window" id="empresa_abogados_proyecto_acc_v">
+        <field name="name">Proyectos</field>
+        <field name="res_model">empresa_abogados.proyecto</field>
+        <field name="view_mode">tree,form,calendar,graph</field>
+    </record>
+    
+    <!-- estudio -->
+    <record model="ir.actions.act_window" id="empresa_abogados_estudio_acc_v">
+        <field name="name">Estudio</field>
+        <field name="res_model">empresa_abogados.estudio</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- seguimiento -->
+    <record model="ir.actions.act_window" id="empresa_abogados_seguimiento_acc_v">
+        <field name="name">Seguimiento</field>
+        <field name="res_model">empresa_abogados.seguimiento</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- adjudicacion -->
+    <record model="ir.actions.act_window" id="empresa_abogados_adjudicacion_acc_v">
+        <field name="name">Adjudicacion</field>
+        <field name="res_model">empresa_abogados.adjudicacion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     <!-- clientes -->
+     <record model="ir.actions.act_window" id="empresa_abogados_clientes_acc_v">
+        <field name="name">Clientes</field>
+        <field name="res_model">empresa_abogados.clientes</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- contactos -->
+    <record model="ir.actions.act_window" id="empresa_abogados_contactos_acc_v">
+        <field name="name">Contactos</field>
+        <field name="res_model">empresa_abogados.contactos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- facturas -->
+    <record model="ir.actions.act_window" id="empresa_abogados_facturas_acc_v">
+        <field name="name">Facturas</field>
+        <field name="res_model">empresa_abogados.facturas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- gestion -->
+    <record model="ir.actions.act_window" id="empresa_abogados_gestion_acc_v">
+        <field name="name">Gestion</field>
+        <field name="res_model">empresa_abogados.gestion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- -->
+    <record model="ir.actions.act_window" id="empresa_abogados_documento_acc_v">
+            <field name="name">Documentos Adjuntos</field>
+            <field name="res_model">empresa_abogados.documento</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="empresa_abogados_creado_acc_v">
+            <field name="name">Documentos Creados</field>
+            <field name="res_model">ir.attachment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

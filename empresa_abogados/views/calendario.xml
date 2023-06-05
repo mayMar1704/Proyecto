@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+        <record id="view_calendario_proyecto" model="ir.ui.view">
+            <field name="name">Calendario</field>
+            <field name="model">empresa_abogados.proyecto</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendario de Proyectos" mode="month"
+                    date_start="fecha_alta"   date_stop="duracion"  event_open_popup="1"
+                    color="name" quick_add='False'>
+                
+                    <field name="name" string="Nombre del proyecto"/>
+                    <field name="estado" string="Estado"  filters='1'/>
+                    <field name="cliente" string="Cliente" filters='1'/>
+                    <field name="empresa" string="Empresa" filters='1'/>
+                    
+                </calendar>
+            </field>
+        </record>
+
+        <record id="view_grafico_proyecto" model="ir.ui.view">
+            <field name="name">graph</field>
+            <field name="model">empresa_abogados.proyecto</field>
+            <field name="arch" type="xml">
+                
+                   <graph string="Gráfico de Proyectos" type="bar">
+                     <field name="empresa" type="row"/>
+                    <field name="tramitacion" type="row"/>
+                    <field name="estado" type="col"/>
+                </graph>
+            </field>
+        </record>
+          
+    </data>
+</odoo>

@@ -1,0 +1,112 @@
+<odoo>
+    <data>
+        <!-- tree -->
+        <!-- oferta-->
+        <record model="ir.ui.view" id="proyecto_oferta_tree">
+            <field name="name">empresa_abogados.oferta.tree</field>
+            <field name="model">empresa_abogados.oferta</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="fecha_solicitud_oferta" />
+                    <field name="fecha_fin_plazo_ejecucion" />
+                    <field name="fecha_envio" />
+                   
+                    <field name="num_informes" />
+                    <field name="convocatoria" />
+
+                    <field name="aceptada" />
+
+                    <field name="fecha_alta" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- proyecto -->
+
+        <record model="ir.ui.view" id="proyecto_proyecto_tree">
+            <field name="name">empresa_abogados.empresa_abogados.tree</field>
+            <field name="model">empresa_abogados.proyecto</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="empresa" widget="label_selection"
+                        options="{'classes': {'draft': 'default', 
+                        'cancel': 'default', 
+                                '1': 'warning',
+                                       '2': 'info'}}" />
+                    <field name="tramitacion" />
+                    <field name="cliente" />
+                    <field name="estado" />
+                    <field name="BI" />
+                    <field name="IVA" widget="percentage" />
+                    <field name="importe_IVA" />
+                    <field name="total" />
+                    <field name="fecha_alta" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- estudio -->
+        <record model="ir.ui.view" id="proyecto_estudio_tree">
+            <field name="name">empresa_abogados.estudio.tree</field>
+            <field name="model">empresa_abogados.estudio</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="contacto" />
+                    <field name="Fin_plazo_presentacion_oferta" />
+                    <field name="importe_licitación" />
+                    <field name="plazo_de_ejecución" />
+                    <field name="presentado" />
+                    <field name="fecha_presentacion" />
+                    <field name="presentado_consorcio" />
+                    <field name="nombre_consorcio" />
+
+                    <field name="descartado" />
+                    <field name="motivo_descarte" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- seguimiento -->
+        <record model="ir.ui.view" id="proyecto_seguimiento_tree">
+            <field name="name">empresa_abogados.seguimiento.tree</field>
+            <field name="model">empresa_abogados.seguimiento</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name='id' />
+                    <field name="precio_arca_bi" />
+                    <field name="baja_de_arca" widget="percentage" />
+
+                    <field name="precio_empresa_adjudicataria" />
+                    <field name="baja_empresa_adjudicataria" widget="percentage" />
+                    <field name="puntuacion_OT_Arca" />
+                    <field name="puntuacion_OT_adjudicataria" />
+
+                    <field name="adjudicado" />
+                    <field name="nombre_empresa_adjudicataria" />
+
+                    <field name="fecha_alta" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- adjudicacion -->
+        <record model="ir.ui.view" id="proyecto_adjudicacion_tree">
+            <field name="name">empresa_abogados.adjudicacion.tree</field>
+            <field name="model">empresa_abogados.adjudicacion</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" />
+                    <field name="fecha_fin_plazo_ejecucion" />
+                    <field name="fecha_fin_plazo_prorroga" />
+                    <field name="fecha_de_adjudicacion" />
+                    <field name="fecha_alta" />
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

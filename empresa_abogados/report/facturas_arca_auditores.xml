@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_factura_auditores_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <div class="header">
+                            <img src="/empresa_abogados/static/src/img/imagen_arca_auditores.png"
+                                style="max-height: 100px; text-align: left;" />
+                            <div style="position: relative;">
+
+                                <img src="/empresa_abogados/static/src/img/arca_auditores_otro.png"
+                                    style="max-height: 50px; position: absolute; top: -55px; right: 0;" />
+                                <hr
+                                    style="border: none; border-top: 1px solid #ff8c00; margin-top: 0; margin-bottom: 10px;" />
+                            </div>
+                        </div>
+                        <t t-call="web.external_layout">
+                            <div class="report-layout">
+                                <style>
+                                    *{
+                                    font-family: Helvetica, Arial, sans-serif;
+                                    }
+                                    
+                                </style>
+                                <br></br>
+                                <br></br>
+
+                                <div style="margin-right: 50px;margin-left: 80px;">
+                                   
+                                   
+                                        <p style="text-align: right;"> FACTURA<b>
+                                                <span t-field="doc.num_factura" />
+                                            </b>
+                                        </p>
+
+                                        <br></br>
+                                        <div style="text-align: left;">
+                                            <br></br>
+                                            <p>
+                                                <b>
+                                                    <span t-field="doc.nombre_cliente" />
+                                                </b>
+                                            </p>
+                                            <br></br>
+                                            <p>
+                                                <b>
+                                                    <span t-field="doc.direccion_cliente" />
+                                                </b>
+                                            </p>
+                                            <br></br>
+                                            <p>CIF:<b>
+                                                    <span t-field="doc.cif_cliente" />
+                                                </b></p>
+                                        </div>
+                                        <br></br>
+                                        <div>
+                                            <p> Factura correspondiente a los trabajos de <b>
+                                                    <span t-field="doc.proyecto" />
+                                                </b>
+                                                . </p>
+                                        </div>
+                                        <br></br>
+                                        <div style="font-size: 1.2em;" align="right">
+                                            <table>
+                                                <p>
+                                                    <tr>
+                                                        <td>Base Imponible ................. </td>
+                                                        <td style="text-align: right;">
+                                                            <b>
+                                                                <t t-foreach="docs" t-as="doc">
+                                                                    <span t-field="doc.BI" />
+                                                                </t>
+                                                            </b>
+                                                            € </td>
+                                                    </tr>
+                                                </p>
+                                                <p>
+                                                    <tr>
+                                                        <td>21% IVA ........................... </td>
+                                                        <td style="text-align: right;">
+                                                            <span class="underlined"><b>
+                                                                    <t t-foreach="docs"
+                                                                        t-as="doc">
+                                                                        <span
+                                                                            t-field="doc.importe_IVA" />
+                                                                    </t>
+                                                                </b>
+                                                                €</span>
+                                                        </td>
+                                                    </tr>
+                                                </p>
+                                                <p>
+                                                    <tr>
+                                                        <td>TOTAL
+                                                            ................................ </td>
+                                                        <td style="text-align: right;">
+                                                            <b>
+                                                                <t t-foreach="docs" t-as="doc">
+                                                                    <span
+                                                                        t-field="doc.importe_total" />
+                                                                </t>
+                                                            </b>
+                                                            € </td>
+                                                    </tr>
+                                                </p>
+                                            </table>
+                                        </div>
+                                        <br></br>
+                                        <br></br>
+                                        <div>
+                                            <p>En Madrid, a fecha y hora de la firma electrónica</p>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                        </div>
+                                        <div>
+                                            <p>Fdo. Esther Camacho González
+                                            </p>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                            <br></br>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-center" style="font-size:.93em;">Dicha
+                                                factura
+                                                la
+                                                pueden hacer efectiva mediante
+                                                transferencia a nuestra
+                                                cuenta corriente del Banco Sabadell (Calle
+                                                Arturo Soria
+                                                316
+                                                de
+                                                Madrid).
+                                                C.C.C. nº ES4100810638590002108117 a nombre de
+                                                ARCA
+                                                AUDITORES
+                                                S.L.
+                                            </h6>
+                                        </div>
+                                        <div style="font-size: .80em;">
+                                            <p> De conformidad con lo establecido en la
+                                                normativa vigente en Protección de Datos de
+                                                Carácter
+                                                Personal,
+                                                le
+                                                informamos que sus datos serán incorporados al
+                                                sistema
+                                                de
+                                                tratamiento titularidad de ARCA AUDITORES SL con
+                                                CIF
+                                                B88325113 y
+                                                domicilio social sito en CL SANTA ENGRACIA 6
+                                                28010,
+                                                MADRID,
+                                                con
+                                                la
+                                                finalidad de poder remitirle la correspondiente
+                                                factura.
+                                                En
+                                                cumplimiento con la normativa vigente, ARCA
+                                                AUDITORES SL
+                                                informa
+                                                que
+                                                los datos serán conservados durante EN EL PLAZO
+                                                LEGALMENTE
+                                                ESTABLECIDO.
+                                            </p>
+                                            <p> Podrá ejercer los derechos de acceso, rectificación,
+                                                limitación de tratamiento, supresión, portabilidad y
+                                                oposición/revocación, en los términos que establece
+                                                la normativa vigente en materia de protección de
+                                                datos, dirigiendo su petición a la dirección postal
+                                                CL SANTA ENGRACIA 6 28010, MADRID o bien a través de
+                                                correo electrónico <a
+                                                    href="mailto:madrid@arca-audit">
+                                                madrid@arca-audit</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            <div class="footer">
+                                <footer style="font-size:.87em; color: #191970; "
+                                    class="text-center">
+                                    <p>ARCA AUDITORES S.L. <br></br> SEDE CENTRAL SANTA ENGRACIA, 6,
+                                        28010 MADRID +34 913192658 <a
+                                            href="mailto:madrid@arca-audit">
+                                            madrid@arca-audit</a>
+                                            <br>
+                                            ARCA
+                                        AUDITORES, S.L. Inscrito en R.M.Madrid, tomo 38902, folio
+                                        90,
+                                        sección 8, hoja M-691378. CIF: B-88325113</br></p>
+
+                                </footer>
+
+
+                            </div>
+                        </t>
+
+                    </div>
+
+                </t>
+            </t>
+        </template>
+
+        <record id="report_factura_auditores_button" model="ir.actions.report">
+            <field name="name">Factura aud</field>
+            <field name="model">empresa_abogados.facturas</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">empresa_abogados.report_factura_auditores_template</field>
+
+        </record>
+
+    </data>
+</odoo>

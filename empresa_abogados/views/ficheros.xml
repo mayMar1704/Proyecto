@@ -1,0 +1,69 @@
+<odoo>
+    <data>
+        
+         <!-- documentos-->
+        <record model="ir.ui.view" id="proyecto_documentos_adjunto_tree">
+            <field name="name">empresa_abogados.documento.tree</field>
+            <field name="model">empresa_abogados.documento</field>
+            <field name="arch" type="xml">
+                <tree>
+                  <field name="res_id"/>
+                    <field name="name" />
+                    <field name="datas"/>
+                    <field name="mimetype" />
+                </tree>
+            </field>
+        </record>
+         <record id="view_documento_form" model="ir.ui.view">
+            <field name="model">empresa_abogados.documento</field>
+            <field name="arch" type="xml">
+                <form string="Attachments">
+                   <sheet>
+                    <label for="name"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                       <field name="proyecto_id"/>
+                        <group>
+                             
+                            <field name="type"/>
+                            <field name="datas" filename="name" attrs="{'invisible':[('type','=','url')]}"/>
+                            <field name="url" widget="url" attrs="{'invisible':[('type','=','binary')]}"/>
+                            <field name="mimetype" groups="base.group_no_one"/>
+                        </group>
+                       
+                        <group string="History" groups="base.group_no_one" attrs="{'invisible':[('create_date','=',False)]}">
+                            <label for="create_uid" string="Creation"/>
+                            <div name="creation_div">
+                             
+                                <field name="create_uid" readonly="1" class="oe_inline"/> <br/>
+                                <field name="create_date" readonly="1" class="oe_inline"/>
+                                
+                            </div>
+                        </group>
+                        <group name="description_group" string="Description" groups="base.group_no_one"  colspan="4">
+                            <field name="description" nolabel="1"/>
+                        </group>
+                        
+                    </group>
+                  </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- ir.attachment-->
+        <record model="ir.ui.view" id="proyecto_attachment_tree">
+            <field name="name">empresa_abogados.documento_creado.tree</field>
+            <field name="model">ir.attachment</field>
+            <field name="arch" type="xml">
+                <tree >
+                    <field name="res_id"/>
+                    <field name="name" />
+                    <field name="file_size" />
+                    <field name="create_uid" />
+                    <field name="create_date" />
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
